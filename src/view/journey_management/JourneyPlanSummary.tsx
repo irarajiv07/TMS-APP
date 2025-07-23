@@ -19,7 +19,7 @@ export class JourneyPlanSummary extends PlfTransScreen {
             //{"name":"Amend Journey Plan ","linkid":"Amend_JP","tooltip":"Click here to launch the Amend Journey Plan screen."}
 		]
 
-    plf.columns = 4
+    plf.columns = 6
     const helpOnJourneyHdrCollapse = plf.addColumnSection({ title: "Search Criteria", collapsed: true, btnID: "searchBtn" }, this);	//69997
     const helpOnJourneyFormCtrl =												//69997
       [

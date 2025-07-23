@@ -227,7 +227,7 @@ export class JourneyPlanScreen extends PlfTransScreen {
     truckAndDriverColumn.add(DriverGridSection)
 
     // Plan Details Section
-    plf.columns = 4;
+    plf.columns = 6;
     var journeyPlanDetailsCollapse = plf.addColumnSection({title:"Route Details"});		//69997
     const journeyPlanDetailsFormCtrl = [     
       plf.addCombo({"label":"Manual Plan",id:"strManualPlan","mandatory":"true"}),
@@ -369,7 +369,7 @@ export class JourneyPlanScreen extends PlfTransScreen {
 			
 		}
 		const DriverRestDetailsGridSection = plf.addGrid(DriverRestDetailsGridDtl,this)
-		plf.columns=4
+		plf.columns=6
 		const DriverRestDetailsColumn = plf.addColumnSection({id:"strDriverRestDetailsGrid",title:"Driver Rest Details - For Duty of Care"});
 		const ValidateDriverCtrl=										
 		[	
@@ -380,14 +380,14 @@ export class JourneyPlanScreen extends PlfTransScreen {
 				
 		DriverRestDetailsColumn.add(DriverRestDetailsGridSection)
 
-    plf.columns=4
+    plf.columns=6
 		const AllocateSection = plf.addCollapseSection({id:"strActionDriver",title:"Allocate the reporting driver irrespective of the above violations"});	
 		const AllocateFormCtrl=															
 		[			
 			plf.addCombo({"label":"Allocate",id:"strAllocate"})			
 		]
 		AllocateSection.add(AllocateFormCtrl);
-		plf.columns=1
+		plf.columns=6
 		const freeActionTextEditor = plf.addColumnSection({title:"Reason",columnWidth:1});
 		const freeActionTextEditorCtrl=															
 		[			
@@ -396,7 +396,7 @@ export class JourneyPlanScreen extends PlfTransScreen {
     freeActionTextEditor.add(freeActionTextEditorCtrl);
     
 		AllocateSection.add(freeActionTextEditor)
-		plf.columns=3
+		plf.columns=6
 		const AllocateDocDetailSection = plf.addColumnSection({id:"strAllocateDocSection",title:"",columnWidth:1});	
 		const AllocateDocDetailFormCtrl=															
 		[

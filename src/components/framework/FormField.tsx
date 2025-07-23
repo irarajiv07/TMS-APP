@@ -20,7 +20,7 @@ interface FormFieldProps {
   entity?: string;
   dateId?: string;
   timeId?: string;
-  displayType?: string;  
+  displayType?: string;
   onDoubleClick?: () => void;
 }
 
@@ -44,7 +44,7 @@ const FormField: React.FC<FormFieldProps> = ({
   timeId,
   displayType,
   onDoubleClick,
-  onChangeImmediate,
+  onChangeImmediate
 }) => {
   const [localValue, setLocalValue] = React.useState(value || '');
   
@@ -123,6 +123,7 @@ const FormField: React.FC<FormFieldProps> = ({
                 value={localValue?.split(' ')[0] || ''}
                 onChange={(e) => {
                   const time = localValue?.split(' ')[1] || '';
+                 
                   handleChange(`${e.target.value} ${time}`.trim());
                 }}
                 disabled={disabled}

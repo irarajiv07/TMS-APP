@@ -8,7 +8,7 @@ export default defineConfig({
     cors: false,
     fs: {
       strict: true,
-      deny: ['**/.*'], 
+      deny: ['**/.*'],
     },
    proxy: {
   '/JMSServlet': {
