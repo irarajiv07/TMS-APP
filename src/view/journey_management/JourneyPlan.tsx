@@ -73,7 +73,7 @@ export class JourneyPlanScreen extends PlfTransScreen {
     ];
 
     // Add Keyfields
-    this.keyFields = ["strJourneyPlanNo","strInspectionNo","strJourneyManagerCode"];
+    //this.keyFields = ["strJourneyPlanNo","strInspectionNo","strJourneyManagerCode"];
 
     // Journey plan Header Section starts
     plf.columns = 6;
@@ -543,75 +543,249 @@ export class JourneyPlanScreen extends PlfTransScreen {
     this.dataHistorySectionFlag = true;
 
     // Event Handlers
-    this.eventHandlers = [
-      {
-        "controlid": "",
-        "tasktype": "onload",
-        "input": ["strJourneyPlanNo"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "initJourneyPlanScrTS"
-      },
-      {
-        "controlid": "",
-        "tasktype": "toolbarclick",
-        "action": "Create",
-        "input": ["strJourneyPlanNo"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "createJourneyPlanTS"
-      },
-      {
-        "controlid": "",
-        "tasktype": "toolbarclick",
-        "action": "Edit",
-        "input": ["strJourneyPlanNo"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "modifyJourneyPlanTS"
-      },
-      {
-        "controlid": "",
-        "tasktype": "toolbarclick",
-        "action": "Delete",
-        "input": ["strJourneyPlanNo"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "deleteJourneyPlanTS"
-      },
-      {
-        "controlid": "",
-        "tasktype": "toolbarclick",
-        "action": "Confirm",
-        "input": ["strJourneyPlanNo"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "authorizeJourneyPlanTS"
-      },
-      {
-        "controlid": "strTruckCode",
-        "tasktype": "onenter",
-        "input": ["strTruckCode"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "fetchTruckDetailsTS"
-      },
-      {
-        "controlid": "strDriverCode",
-        "tasktype": "onenter",
-        "input": ["strDriverCode"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "fetchDriverDetailsTS"
-      },
-      {
-        "controlid": "strRouteCode",
-        "tasktype": "onenter",
-        "input": ["strRouteCode"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "fetchRouteDetailsTS"
-      },
-      {
-        "controlid": "cmn_btnsubmit",
-        "tasktype": "btnclick",
-        "input": ["strRouteCode", "dtDepartureDate", "tmDepartureTime"],
-        "service": "CoreJourneyPlanService",
-        "methodName": "createPlanScheduleTS"
-      }
-    ];
+    	this.eventHandlers = 
+			[
+			
+				{
+				"controlid":"",
+				"tasktype":"onload",
+				"input":["strJourneyPlanNo"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"initJourneyPlanScrTS"
+			},	
+			{
+				"controlid":"strTruckCode",
+				"tasktype":"onenter",
+				"input":["strTruckCode"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchTruckDetailsTS"
+			},
+			{
+				"controlid":"strJourneyPlanNo",
+				"tasktype":"onenter",
+				"input":["strJourneyPlanNo"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchJourneyPlanScrTS"
+			},
+			
+			{
+				"controlid":"strRouteCode",
+				"tasktype":"onenter",
+				"input":["strRouteCode"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchRouteDetailsTS"
+			},
+			/*{
+				"controlid":"strJMCCode",
+				"tasktype":"onenter",
+				"input":["strJMCCode"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"onenterJmcCodeTS"
+			},*/
+			{
+				"controlid":"strDriverCode",
+				"tasktype":"onenter",
+				"input":["strDriverCode"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchDriverDetailsTS"
+			},
+			{
+				"controlid":"strJourneyManagerCode",
+				"tasktype":"onenter",
+				"input":["strJourneyManagerCode"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchJourneyManagerDetails"
+			},
+			{
+				"controlid":"strJourneyCoordinatorCode",
+				"tasktype":"onenter",
+				"input":["strJourneyCoordinatorCode"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchJourneyCoordinatorDetails"
+			},
+			{
+				"controlid":"strTrailerCode",
+				"tasktype":"onenter",
+				"input":["strTrailerCode"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchTrailerDetailsTS"
+			},
+			/*{
+				"controlid":"strCustomerVendorCode",
+				"tasktype":"onenter",
+				"input":["strCustomerVendorCode"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchCustomerVendorTS"
+			},*/
+			{
+				"controlid":"strInspectionNo",
+				"tasktype":"onenter",
+				"input":["strInspectionNo"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchInspectionAdviceScrTS"
+			},
+			/*{
+				"controlid":"strWaybillNo",
+				"tasktype":"onenter",
+				"input":["strWaybillNo"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchWaybillNoScrTS"
+			},
+			{
+				"controlid":"strWayBillNo",
+				"tasktype":"onenter",
+				"input":["strWayBillNo"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"fetchWaybillNoTS"
+			},*/
+			{
+					"controlid":"",
+					"tasktype":"toolbarclick",
+					"action":"Save",
+					"input":["strJourneyPlanNo","strInspectionNo","strJourneyManagerCode","strTruckCode","strCustomerVendorCode","dtNeedDate","dtJourneyPlanDate",
+					"strWaybillNo","dtROSDate","strJourneyPlanType","strJourneyCoordinatorCode","strDriverCode","strCustomerCode","strPickupPoint","strDriverCompliance",
+					"strTruckCompliance","strLoadCompliance","iRiskAssessmentScore","strStatus","strRouteCode","strManualPlan","dtDepatureDate","tmDepartureTime","strNightDriveApproval","strApprovalReason","strApproverName","strCommentsForDriver","strPassengerName","strPassengerRemarks","strToolBoxTalks","strTransitLocation","strJourneyMode",
+					"strRiskAssessmentScore","strCommodity","strTrailerCode","strNightDriveApproval","dtDepartureDate","dtDepartureTime","strOrigin","strDestination","planDetails",
+					"passengerDetails","toolBoxTalksDetails","referenceDetails","manualplanDetails","itemDetails","strFileAttach","strFileAttach1","violationDetails","strRepDriverCode","strBLDistance","strBLWeight","strBLRemarks","strFuelReq","strFuelChitNo","strFcnNo","strJMCCode",
+                     "strAllocate","strSupUploadDoc","strActionBy","stActionDtTm","strAllocateReason"
+                      ],
+					"service":"CoreJourneyPlanService",
+					"methodName":"modifyJourneyPlanTS"
+			},
+			{
+					"controlid":"",
+					"tasktype":"toolbarclick",
+					"action":"Create",
+					"input":["strJourneyPlanNo","strInspectionNo","strJourneyManagerCode","strTruckCode","strCustomerVendorCode","dtNeedDate","dtJourneyPlanDate",
+					"strWaybillNo","dtROSDate","strJourneyPlanType","strJourneyCoordinatorCode","strDriverCode","strCustomerCode","strPickupPoint","strDriverCompliance",
+					"strTruckCompliance","strLoadCompliance","iRiskAssessmentScore","strStatus","strRouteCode","strManualPlan","dtDepatureDate","tmDepartureTime","strNightDriveApproval","strApprovalReason",
+					"strApproverName","strCommentsForDriver","strPassengerName","strPassengerRemarks","strToolBoxTalks","strTransitLocation","strJourneyMode",
+					"strRiskAssessmentScore","strCommodity","strTrailerCode","strNightDriveApproval","dtDepartureDate","dtDepartureTime","strOrigin","strDestination","planDetails",
+					"passengerDetails","toolBoxTalksDetails","referenceDetails","manualplanDetails","itemDetails","strFileAttach","strFileAttach1","violationDetails"],
+					"service":"CoreJourneyPlanService",
+					"methodName":"createJourneyPlanTS"
+			},
+			{
+					"controlid":"",
+					"tasktype":"toolbarclick",
+					"action":"Delete",
+					"input":["strJourneyPlanNo"],
+					"service":"CoreJourneyPlanService",
+					"methodName":"deleteJourneyPlanTS"
+			},
+			{
+					"controlid":"",
+					"tasktype":"toolbarclick",
+					"action":"Confirm",
+					"input":["strJourneyPlanNo","strInspectionNo","strJourneyManagerCode","strTruckCode","strCustomerVendorCode","dtNeedDate","dtJourneyPlanDate",
+					"strWaybillNo","dtROSDate","strJourneyPlanType","strJourneyCoordinatorCode","strDriverCode","strCustomerCode","strPickupPoint","strDriverCompliance",
+					"strTruckCompliance","strLoadCompliance","iRiskAssessmentScore","strStatus","strRouteCode","strManualPlan","dtDepatureDate","tmDepartureTime","strNightDriveApproval","strApprovalReason",
+					"strApproverName","strCommentsForDriver","strPassengerName","strPassengerRemarks","strToolBoxTalks","strTransitLocation","strJourneyMode",
+					"strRiskAssessmentScore","strCommodity","strTrailerCode","strNightDriveApproval","dtDepartureDate","dtDepartureTime","strOrigin","strDestination","planDetails",
+					"passengerDetails","toolBoxTalksDetails","referenceDetails","manualplanDetails","itemDetails","strFileAttach","strFileAttach1","violationDetails","strRepDriverCode","strBLDistance","strBLWeight","strBLRemarks","strFuelReq","strFuelChitNo","strFcnNo","strJMCCode",
+                    "strAllocate","strSupUploadDoc","strActionBy","stActionDtTm","strAllocateReason"],
+					"service":"CoreJourneyPlanService",
+					"methodName":"authorizeJourneyPlanTS"
+					
+				},
+				/*
+			{	
+					"controlid":"",
+					"tasktype":"toolbarclick",
+					"action":"Print Release Letter",
+					"input":["strJourneyPlanNo","strInspectionNo","strJourneyManagerCode","strTruckCode","strCustomerVendorCode","dtNeedDate","dtJourneyPlanDate",
+					"strWaybillNo","dtROSDate","strJourneyPlanType","strJourneyCoordinatorCode","strDriverCode","strCustomerCode","strPickupPoint","strDriverCompliance",
+					"strTruckCompliance","strLoadCompliance","iRiskAssessmentScore","strStatus","strRouteCode","strManualPlan","dtDepatureDate","tmDepartureTime","strNightDriveApproval","strApprovalReason",
+					"strApproverName","strCommentsForDriver","strPassengerName","strPassengerRemarks","strToolBoxTalks","strTransitLocation","strJourneyMode",
+					"strRiskAssessmentScore","strCommodity","strTrailerCode","strNightDriveApproval","dtDepartureDate","dtDepartureTime","strOrigin","strDestination","planDetails",
+					"passengerDetails","toolBoxTalksDetails","referenceDetails","manualplanDetails","itemDetails","strFileAttach","strFileAttach1","violationDetails","strRepDriverCode"],
+					"service":"CoreJourneyPlanService",
+					"methodName":"ReleaseJourneyPlanTS"
+			},*/
+            //69640
+			{
+					"controlid":"",
+					"tasktype":"toolbarclick",
+					"action":"Short-Close",
+					"input":["strJourneyPlanNo","strWaybillNo","strTruckCode","strDriverCode","strTrailerCode","strFileAttach","strFileAttach1","violationDetails"],
+					"service":"CoreJourneyPlanService",
+					"methodName":"shortcloseJourneyPlanTS"
+			},
+			{
+					"controlid":"",
+					"tasktype":"toolbarclick",
+					"action":"Reject",
+					"input":["strJourneyPlanNo","strInspectionNo","strTruckCode","strDriverCode","strTrailerCode","strFileAttach","strFileAttach1","violationDetails"],
+					"service":"CoreJourneyPlanService",
+					"methodName":"rejectJourneyPlanTS"
+			},
+			{
+				"controlid":"",
+				"tasktype":"toolbarclick",
+				"action":"Print Waybill",
+				"input":["strLoadNo"],
+				"service":"CoreReportService",
+				"methodName":"PrintwaybillloadingReport"
+			},
+            {
+			    "controlid":"",
+				"tasktype":"toolbarclick",
+				"action":"Print Inspection",
+				"input":["strInspectionNo","strInspectionType"],
+				"service":"CoreReportService",
+				"methodName":"PrintVehicleInspectReport"
+			},
+			{
+				"controlid":"",
+				"tasktype":"toolbarclick",
+				"action":"Print JP",
+				"input":["strJourneyPlanNo"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"PrintJourneyPlanReport"
+			},
+			{       
+				"controlid":"cmn_btnsubmit",
+				"tasktype":"btnclick",
+				"input":["strTruckCode","dtDepartureDate","tmDepartureTime","strRouteCode","strFileAttach","strFileAttach1","strWaybillNo","violationDetails"],
+			    "service":"CoreJourneyPlanService",
+				"methodName":"createPlanScheduleTS"
+			},
+			{
+				"controlid":"strManualPlan",
+				"tasktype":"onchange",
+				"input":["strManualPlan"],
+				"service":"CoreJourneyPlanService",
+				"methodName":"onchange_manualplan"
+			},
+			{
+				
+					"tasktype":"proto",
+					"filename":"jm_master/JourneyPlan.json"
+			},
+			{
+					"controlid":"strRepDriverCode",
+					"tasktype":"onenter",
+					"input":["strRepDriverCode"],
+					"service":"CoreJourneyPlanService",
+					"methodName":"fetchJPDriverDetTS"
+			},
+			{       
+				"controlid":"",
+				"tasktype":"toolbarclick",
+				"action":"Print Diversion Letter",
+				"input":["strLoadNo"],
+				"service":"CoreReportService",
+				"methodName":"JpPrintDiversionReport"
+			},
+			{       
+				"controlid":"strValidateDriverRest",
+				"tasktype":"btnclick",
+				"input":["strRepDriverCode","strJourneyPlanNo","strDriverCode","dtDepartureDate","strRouteCode","strManualPlan"],
+			    "service":"CoreJourneyPlanService",
+				"methodName":"validateDriverRestTS"
+			}
+			
+			];
 
     this.hlpLinks=
 		{
