@@ -43,7 +43,7 @@ useEffect(() => {
   // 💡 Apply initial values if any
   Object.entries(initialValues).forEach(([key, value]) => {
     screen.setFieldValue(key, value);
-    screen.handleFieldChange(key, value);  // trigger any dependencies
+    //screen.handleFieldChange(key, value);  // trigger any dependencies
   });
 
 
