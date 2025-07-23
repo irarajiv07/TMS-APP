@@ -410,7 +410,7 @@ export class JourneyPlanScreen extends PlfTransScreen {
 		AllocateSection.add(AllocateDocDetailSection);
 
     // Night Driving Section
-    plf.columns = 4;
+    plf.columns = 6;
     const statusDetailsCollapse = plf.addColumnSection({ title: "Night Driving" });
     const statusDetailsFormCtrl = [
      plf.addCombo({"label":"Night Driving","id":"strNightDriveApproval"}),
@@ -612,6 +612,151 @@ export class JourneyPlanScreen extends PlfTransScreen {
         "methodName": "createPlanScheduleTS"
       }
     ];
+
+    this.hlpLinks=
+		{
+			"jpno":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"journey_management.JourneyPlanHelp",
+					"send":[
+							{"parent":"","child":""}
+						   ],
+					"receive":[
+							{"parent":"strJourneyPlanNo","child":"JOURNEY_PLAN_NO"}
+							]
+				},			
+			"waybillno":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"tms.LoadBuildingHelp",
+					"send":[
+							{"parent":"","child":""}
+						   ],
+					"receive":[
+							{"parent":"strWaybillNo","child":"LOAD_NO"}
+							]
+				},	
+				
+			"driver":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"jm_master.DriverHelp",
+					"send":[
+							{"parent":"","child":""},
+                                                 {"direct":"DRIVER_AC","child":"strContext"}//74993
+						   ],
+					"receive":[
+							{"parent":"strRepDriverCode","child":"DRIVER_CODE"},
+							{"parent":"strRepDriverName","child":"DRIVER_NAME"},	
+							{"parent":"strRepMobileNo","child":"PHONE_NO"},
+							]
+				},
+				"journeyManagerCode":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"jm_master.EmployeeHelp",
+					"send":[
+							{"parent":"","child":""},
+							{"direct":"Tran","child":"strContext"}
+						   ],
+					"receive":[
+							{"parent":"strJourneyManagerCode","child":"EMPLOYEE_CODE"},
+							{"parent":"strJourneyManagerName","child":"EMPLOYEE_NAME"}
+							]
+				},
+				"journeyCoordinatorCode":
+				{
+
+					"hlpType":"Header",
+					"hlpScreen":"jm_master.EmployeeHelp",
+					"send":[
+							{"parent":"","child":""}
+						   ],
+					"receive":[
+							{"parent":"strJourneyCoordinatorCode","child":"EMPLOYEE_CODE"},
+							{"parent":"strJourneyCoordinatorName","child":"EMPLOYEE_NAME"}
+							]
+				},
+				"truckCode":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"jm_master.TruckHelp",
+					"send":[
+							{"parent":"","child":""}
+						   ],
+					"receive":[
+							{"parent":"strTruckCode","child":"TRUCK_CODE"},
+							{"parent":"strTruckDescription","child":"TRUCK_DESC"}
+							]
+				},
+				"trailerCode":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"jm_master.TruckHelp",
+					"send":[
+							{"parent":"","child":""}
+						   ],
+					"receive":[
+							{"parent":"strTrailerCode","child":"TRUCK_CODE"},
+							{"parent":"strTrailerDescription","child":"TRUCK_DESC"}
+							]
+				},
+				/*"customerVendor":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"jm_master.CustomerVendorHelp",
+					"send":[
+							{"parent":"","child":""}
+						   ],
+					"receive":[
+							{"parent":"strCustomerVendorCode","child":"CUST_VENDOR_CODE"},
+							{"parent":"strCustomerVendorName","child":"CUST_VENDOR_NAME"},
+							{"parent":"strCustomerCode","child":"CUST_CODE"},
+							{"parent":"strCustomerName","child":"CUST_NAME"}
+							]
+				},*/
+				"routeCode":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"jm_master.RouteHelp",
+					"send":[
+							{"parent":"","child":""},
+							{"direct":"ROUTE_AC","child":"strContext"}
+						   ],
+					"receive":[
+							{"parent":"strRouteCode","child":"ROUTE_CODE"},
+							{"parent":"strRouteDescription","child":"JOURNEYLEGS"},
+							{"parent":"strOrigin","child":"INTRANSIT_ORIGIN"},
+							{"parent":"strDestination","child":"INTRANSIT_DEST"},
+							{"parent":"strJMCCode","child":"JMC_CODE"}
+							]
+				},
+				"inspectionno":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"journey_management.InspectionHelp",
+					"send":[
+							{"parent":"","child":""}
+						   ],
+					"receive":[
+							{"parent":"strInspectionNo","child":"INSPECTION_NO"}
+							]
+				}/*,
+				//for 75145
+				 "reportingTrailerCode":
+				{
+					"hlpType":"Header",
+					"hlpScreen":"jm_master.TruckHelp",
+					"send":[
+							{"parent":"","child":""},
+							{"direct":"VEHICLE_AC","child":"strContext"}//74993
+						   ],
+					"receive":[
+							{"parent":"strTrailerCode","child":"TRUCK_CODE"}
+							]
+				}*/
+		}
 
     // Screen modes
     this.screenModes = {
